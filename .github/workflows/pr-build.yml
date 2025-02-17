@@ -1,0 +1,9 @@
+---
+name: pr-build
+on: pull_request # yamllint disable-line rule:truthy
+jobs:
+  call-tests-workflow:
+    name: Tests
+    uses: ./.github/workflows/reusable-tests.yml
+    with:
+      BRANCH_NAME: ${{ github.event.pull_request.head.ref }}
